@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.8124279.svg)](https://zenodo.org/badge/doi/10.5281/zenodo.8124279.svg)
+
 # cql-parser-xqm
 
 This software package provides an XQuery module developed at the Digital Academy of the Academy of Sciences and Literature | Mainz that may be used to parse [OASIS-CQL](http://docs.oasis-open.org/search-ws/searchRetrieve/v1.0/os/part5-cql/searchRetrieve-v1.0-os-part5-cql.html) and transform any CQL query into XCQL.
