@@ -1,4 +1,4 @@
-[![DOI](https://zenodo.org/badge/doi/10.5281/zenodo.8124279.svg)](https://zenodo.org/badge/doi/10.5281/zenodo.8124279.svg)
+[![DOI](https://zenodo.org/badge/639912158.svg)](https://zenodo.org/badge/latestdoi/639912158)
 
 # cql-parser-xqm
 
