@@ -1,5 +1,3 @@
-[![DOI](https://zenodo.org/badge/639912158.svg)](https://zenodo.org/badge/latestdoi/639912158)
-
 # cql-parser-xqm
 
 This software package provides an XQuery module developed at the Digital Academy of the Academy of Sciences and Literature | Mainz that may be used to parse [OASIS-CQL](http://docs.oasis-open.org/search-ws/searchRetrieve/v1.0/os/part5-cql/searchRetrieve-v1.0-os-part5-cql.html) and transform any CQL query into XCQL.
@@ -54,7 +52,9 @@ implements level 0 of OASIS CQL by transforming a simple query (with or without 
 ```xml
 <searchClause xmlns="http://www.loc.gov/zing/cql/xcql/">
     <index>cql.serverChoice</index>
-    <relation>=</relation>
+    <relation>
+        <value>=</value>
+    </relation>
     <term>cat</term>
 </searchClause>
 ```
@@ -79,7 +79,9 @@ implements level 1 of OASIS CQL by transforming a query with a(n implicit) relat
 ```xml
 <searchClause xmlns="http://www.loc.gov/zing/cql/xcql/">
     <index>cql.serverChoice</index>
-    <relation>=</relation>
+    <relation>
+        <value>=</value>
+    </relation>
     <term>cat</term>
 </searchClause>
 ```
@@ -87,7 +89,9 @@ or
 ```xml
 <searchClause xmlns="http://www.loc.gov/zing/cql/xcql/">
     <index>c.title</index>
-    <relation>any</relation>
+    <relation>
+        <value>any</value>
+    </relation>
     <term>fish frog</term>
 </searchClause>
 ```
@@ -111,7 +115,9 @@ implements level 1 of OASIS CQL by transforming a query with a(n implicit) relat
 ```xml
 <searchClause xmlns="http://www.loc.gov/zing/cql/xcql/">
     <index>cql.serverChoice</index>
-    <relation>=</relation>
+    <relation>
+        <value>=</value>
+    </relation>
     <term>cat</term>
 </searchClause>
 ```
@@ -119,7 +125,9 @@ or
 ```xml
 <searchClause xmlns="http://www.loc.gov/zing/cql/xcql/">
     <index>c.title</index>
-    <relation>any</relation>
+    <relation>
+        <value>any</value>
+    </relation>
     <term>fish frog</term>
 </searchClause>
 ```
@@ -132,14 +140,18 @@ or
     <leftOperand>
         <searchClause>
             <index>cql.serverChoice</index>
-            <relation>=</relation>
+            <relation>
+                <value>=</value>
+            </relation>
             <term>cat</term>
         </searchClause>
     </leftOperand>
     <rightOperand>
         <searchClause>
             <index>cql.serverChoice</index>
-            <relation>=</relation>
+            <relation>
+                <value>=</value>
+            </relation>
             <term>dog</term>
         </searchClause>
     </rightOperand>

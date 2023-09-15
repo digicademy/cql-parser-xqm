@@ -80,8 +80,10 @@ declare %private function oasis-cql-parser:build-search-clause($index as xs:stri
     else
         <searchClause>
             <index>{ $index }</index>
-            <relation>{ oasis-cql-parser:remove-modifiers($relation) }</relation>
-            { oasis-cql-parser:build-modifiers($relation) }
+            <relation>
+                <value>{ oasis-cql-parser:remove-modifiers($relation) }</value>
+                { oasis-cql-parser:build-modifiers($relation) }
+            </relation>
             <term>{ oasis-cql-parser:unquote-term($term) }</term>
         </searchClause>
 };
@@ -128,7 +130,7 @@ declare function oasis-cql-parser:parse-relation-query($query as xs:string?) as 
         oasis-cql-parser:build-search-clause(replace($query, $oasis-cql-parser:simple-relation-query-pattern, "$1"), replace($query, $oasis-cql-parser:simple-relation-query-pattern, "$2"), replace($query, $oasis-cql-parser:simple-relation-query-pattern, "$3"))
     else if (matches($query, $oasis-cql-parser:relation-query-pattern)) then
         oasis-cql-parser:build-search-clause(replace($query, $oasis-cql-parser:relation-query-pattern, "$1"), replace($query, $oasis-cql-parser:relation-query-pattern, "$2"), replace($query, $oasis-cql-parser:relation-query-pattern, "$3"))
-    else
+    else 
         oasis-cql-parser:parse-simple-query($query)
 };
 
@@ -143,7 +145,7 @@ declare %private function oasis-cql-parser:get-substring-until-closing-bracket($
     else
         let $substring := substring($query, 1, $i)
         let $quot-count := functx:number-of-matches($substring, '[^\\]"') + functx:number-of-matches($substring, '""')
-        let $sum :=
+        let $sum := 
             if ($quot-count mod 2 eq 1) then (: ignore substrings with an odd number of quotation marks because that means that a quoted part is ot yet unquoted :)
                 0
             else
@@ -204,7 +206,7 @@ declare function oasis-cql-parser:parse-boolean-query($query as xs:string?) as e
                     <leftOperand>{ oasis-cql-parser:parse-boolean-query($left-operand) }</leftOperand>
                     <rightOperand>{ oasis-cql-parser:parse-boolean-query($right-operand) }</rightOperand>
                 </triple>
-    else
+    else 
         oasis-cql-parser:parse-relation-query($query)
 };
 
@@ -213,7 +215,7 @@ declare function oasis-cql-parser:parse-boolean-query($query as xs:string?) as e
  : @param $query an OASIS CQL query with or without prefix assignments e.g. `> dc = "info:srw/context-sets/1/dc-v1.1" dc.title > cat` or `dog`
 :)
 declare function oasis-cql-parser:parse-prefixes($query as xs:string?) as element(prefixes)? {
-    let $prefixes :=
+    let $prefixes := 
         for $prefix-assignment in functx:get-matches-and-non-matches($query, $oasis-cql-parser:prefix-assignment-pattern)[name() eq "match"]
         let $prefix := replace($prefix-assignment, $oasis-cql-parser:prefix-assignment-pattern, "$1")
         let $uri := replace($prefix-assignment, $oasis-cql-parser:prefix-assignment-pattern, "$2")
@@ -264,3 +266,4 @@ declare function oasis-cql-parser:parse-sort-keys($query as xs:string?) as eleme
 declare function oasis-cql-parser:remove-sortby($query as xs:string) as xs:string? {
     tokenize($query, "[Ss][Oo][Rr][Tt][Bb][Yy]")[1]
 };
+
